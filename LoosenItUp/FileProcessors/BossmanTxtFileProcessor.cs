@@ -5,7 +5,7 @@ using System.IO;
 
 namespace LoosenItUp.FileProcessors
 {
-    public class BossmanDocXFileProcessor : IFileProcessor
+    public class BossmanTxtFileProcessor : IFileProcessor
     {
         string CustomerName = "Dr. Boss Man ltd.";
         public ResultDto Process(string filename)

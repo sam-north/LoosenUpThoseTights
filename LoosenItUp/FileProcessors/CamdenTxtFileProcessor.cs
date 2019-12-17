@@ -5,7 +5,7 @@ using System.IO;
 
 namespace LoosenItUp.FileProcessors
 {
-    public class CamdenDocXFileProcessor : IFileProcessor
+    public class CamdenTxtFileProcessor : IFileProcessor
     {
         string CustomerName = "Camden South llc";
         public ResultDto Process(string filename)
@@ -41,9 +41,9 @@ namespace LoosenItUp.FileProcessors
                     var decimalPointIndex = restOfLine.IndexOf(".");
                     var patientAmountOwed = ObjectFactory.Create<BalanceOwedDto>();
                     patientAmountOwed.Name = result.PatientOccurrances[0].Name;
-                    var restOfLineAfterDecimal = restOfLine.Substring(decimalPointIndex);
+                    var restOfLineAfterDecimal = restOfLine.Substring(decimalPointIndex + 1);
                     var closingPeriodIndexAfterAmount = restOfLineAfterDecimal.IndexOf(".");
-                    var amount = Convert.ToDecimal(restOfLine.Substring(0, closingPeriodIndexAfterAmount).Trim());
+                    var amount = Convert.ToDecimal(restOfLine.Substring(0, decimalPointIndex + closingPeriodIndexAfterAmount + 1).Trim());
                     patientAmountOwed.Total += amount;
                     customerBalanceDto.Total += amount;
                     result.PatientBalancesOwed.Add(patientAmountOwed);

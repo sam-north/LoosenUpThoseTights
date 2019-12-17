@@ -14,11 +14,11 @@ namespace LoosenItUp.FileProcessors
             {
                 if (filename.Contains("bossman"))
                 {
-                    return ObjectFactory.Create<BossmanDocXFileProcessor>();
+                    return ObjectFactory.Create<BossmanTxtFileProcessor>();
                 }
                 else
                 {
-                    return ObjectFactory.Create<CamdenDocXFileProcessor>();
+                    return ObjectFactory.Create<CamdenTxtFileProcessor>();
                 }
             }
         }
